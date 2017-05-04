@@ -9,10 +9,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +33,7 @@ public class UserDB extends SQLiteOpenHelper {
         String CREATE_TABLE = "CREATE TABLE " + USER_TABLE + "("
                 + KEY_ID + " INTEGER PRIMARY KEY, "
                 + KEY_USERNAME + " TEXT,"
-                + KEY_PASSWORD + " TEXT;";
+                + KEY_PASSWORD + " TEXT);";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -53,7 +49,7 @@ public class UserDB extends SQLiteOpenHelper {
 
     //CRUD
 
-    //Add new bird
+    //Add new user
     void addUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -65,7 +61,7 @@ public class UserDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting single contact
+    // Getting single user
     User getUser(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -77,7 +73,7 @@ public class UserDB extends SQLiteOpenHelper {
 
         User user = new User(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2));
-        // return contact
+        // return user
         return user;
     }
 
@@ -97,16 +93,16 @@ public class UserDB extends SQLiteOpenHelper {
                 user.setUserId(Integer.parseInt(cursor.getString(0)));
                 user.setUsername(cursor.getString(1));
                 user.setPassword(cursor.getString(2));
-                // Adding bird to list
+                // Adding user to list
                 userList.add(user);
             } while (cursor.moveToNext());
         }
 
-        // return bird list
+        // return user list
         return userList;
     }
 
-    // Updating single contact
+    // Updating single user
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -119,7 +115,7 @@ public class UserDB extends SQLiteOpenHelper {
                 new String[] { String.valueOf(user.getUserId()) });
     }
 
-    // Deleting single contact
+    // Deleting single user
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(USER_TABLE, KEY_ID + " = ?",
@@ -129,7 +125,7 @@ public class UserDB extends SQLiteOpenHelper {
 
     // Getting contacts Count
     public int getUserCount() {
-        String countQuery = "SELECT  * FROM " + USER_TABLE;
+        String countQuery = "SELECT * FROM " + USER_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();

@@ -16,13 +16,11 @@ public class User {
     }
 
     public  User(String username, String password){
-        userId = -1;
         this.username = username;
         this.password = password;
     }
 
     public User(){
-        userId = -1;
         username = "";
         password = "";
     }
