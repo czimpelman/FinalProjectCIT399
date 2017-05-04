@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 username = input.getText().toString();
                 String valid = "True";
                 for(int i = 1; i <= usersDB.getUserCount(); i++){
-                    if(username.equals(userList.get(i).getUsername())){
+                    User user = usersDB.getUser(i);
+                    if(username.equals(user.getUsername())){
                         valid = "Repeat";
                     }
                 }

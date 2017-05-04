@@ -23,6 +23,8 @@ public class TaskDB extends SQLiteOpenHelper {
     private static final String KEY_CAL = "cal";
     private static final String KEY_TIME = "time";
     private static final String KEY_USERID = "userID";
+    private static final String KEY_LAT = "lat";
+    private static final String KEY_LONGI = "longi";
 
 
     public TaskDB(Context context) {
@@ -36,7 +38,9 @@ public class TaskDB extends SQLiteOpenHelper {
                 + KEY_NAME + " TEXT,"
                 + KEY_CAL + " LONG,"
                 + KEY_TIME + " LONG,"
-                + KEY_USERID + " INTEGER);";
+                + KEY_USERID + " INTEGER,"
+                + KEY_LAT + " FLOAT,"
+                + KEY_LONGI + " FLOAT);";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -61,7 +65,8 @@ public class TaskDB extends SQLiteOpenHelper {
         values.put(KEY_CAL, task.getCal().getTimeInMillis());
         values.put(KEY_TIME, task.getTime());
         values.put(KEY_USERID, task.getUserId());
-
+        values.put(KEY_LAT, 152.522);
+        values.put(KEY_LONGI, 152.522);
         db.insert(TASK_TABLE, null, values);
         db.close();
     }
@@ -71,13 +76,13 @@ public class TaskDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TASK_TABLE, new String[] { KEY_ID,
-                        KEY_NAME, KEY_CAL, KEY_TIME, KEY_USERID }, KEY_ID + "=?",
+                        KEY_NAME, KEY_CAL, KEY_TIME, KEY_USERID, KEY_LAT, KEY_LONGI }, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Task task = new Task(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getLong(2), cursor.getLong(3), cursor.getInt(4));
+                cursor.getString(1), cursor.getLong(2), cursor.getLong(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6));
         // return user
         return task;
     }
@@ -100,6 +105,7 @@ public class TaskDB extends SQLiteOpenHelper {
                 task.setCal(cursor.getLong(2));
                 task.setTime(cursor.getLong(3));
                 task.setUserId(cursor.getInt(4));
+                task.setLatLong(cursor.getFloat(5), cursor.getFloat(6));
                 // Adding task to list
                 taskList.add(task);
             } while (cursor.moveToNext());

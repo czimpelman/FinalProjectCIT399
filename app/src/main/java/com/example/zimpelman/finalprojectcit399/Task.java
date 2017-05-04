@@ -12,13 +12,17 @@ public class Task {
     private Calendar cal;
     private long time;
     private int userId;
+    private float lat;
+    private float longi;
 
-    public Task(int taskId, String name, long cal, long time, int userId){
+    public Task(int taskId, String name, long cal, long time, int userId, float lat, float longi){
         this.taskId = taskId;
         this.name = name;
         this.cal.setTimeInMillis(cal);
         this.time = time;
         this.userId = userId;
+        this.lat = lat;
+        this.longi = longi;
     }
 
     public Task(String name, Calendar cal, long time, int userId){
@@ -69,6 +73,18 @@ public class Task {
         return userId;
     }
 
+    public float getLat(){
+        return lat;
+    }
+
+    public float getLongi(){
+        return longi;
+    }
+
+    public void setLatLong(float lat, float longi){
+        this.lat = lat;
+        this.longi = longi;
+    }
     public void setUserId(int userId) {
         this.userId = userId;
     }
