@@ -76,14 +76,14 @@ public class TaskDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TASK_TABLE, new String[] { KEY_ID,
-                        KEY_NAME, KEY_CAL, KEY_TIME, KEY_USERID, KEY_LAT, KEY_LONGI }, KEY_ID + "=?",
+                        KEY_NAME, KEY_CAL, KEY_TIME, KEY_USERID, KEY_LAT, KEY_LONGI}, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        Task task = new Task(Integer.parseInt(cursor.getString(0)),
+        Task task = new Task(cursor.getInt(0),
                 cursor.getString(1), cursor.getLong(2), cursor.getLong(3), cursor.getInt(4), cursor.getFloat(5), cursor.getFloat(6));
-        // return user
+        // return task
         return task;
     }
 

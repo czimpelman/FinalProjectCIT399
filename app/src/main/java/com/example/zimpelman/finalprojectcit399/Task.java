@@ -30,6 +30,8 @@ public class Task {
         this.cal = cal;
         this.time = time;
         this.userId = userId;
+        this.lat = (float)152.22;
+        longi = (float)152.22;
     }
 
     public Task(){

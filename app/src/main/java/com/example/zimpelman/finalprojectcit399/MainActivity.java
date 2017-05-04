@@ -68,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if(tempId != -1){
-                    Toast.makeText(getApplicationContext(), "Good Job", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), UserAlarms.class);
+                    i.putExtra("User", tempId);
+                    startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(), "Incorrect Username/Password", Toast.LENGTH_LONG).show();
                 }
-                //Intent i = new Intent(getApplicationContext(), UserAlarms.class);
-                //i.putExtra("User", tempId);
-                //startActivity(i);
+
             }
         });
     }
@@ -101,15 +101,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 username = input.getText().toString();
                 String valid = "True";
+                if(username.contains(" ") || username.equals("")){
+                    valid = "";
+                }
                 for(int i = 1; i <= usersDB.getUserCount(); i++){
                     User user = usersDB.getUser(i);
                     if(username.equals(user.getUsername())){
                         valid = "Repeat";
                     }
                 }
-                if(username.contains(" ") || username.equals("")){
-                    valid = "";
-                }
+
                 if(valid.equals("True")){
                     getPassword();
                 }else if(valid.equals("Repeat")){

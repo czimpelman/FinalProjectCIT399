@@ -18,19 +18,26 @@
     <TextView
         android:id="@+id/tvMain"
         android:layout_width="365dp"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/tvBack"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:layout_alignStart="@+id/tvBack"
-        android:layout_marginLeft="9dp"
-        android:layout_marginTop="23dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/tvBack"
+        android:layout_centerHorizontal="true"
         android:background="@android:color/background_light"
         android:gravity="left|center"
-        android:text="    Mail Things to People: 4:00pm"
+        android:text="\t\tMail Things to People: 4:00pm"
         android:textColor="@android:color/black"
         android:textSize="20dp" />
 
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_below="@id/tvMain"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/background_light"
+        android:gravity="left|center"
+        android:text="\t\t2015/03/21"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

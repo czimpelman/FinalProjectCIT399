@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="13dp"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/tvTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnBack"
+        android:layout_alignRight="@+id/btnBack"
+        android:layout_below="@+id/btnBack"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="48dp"
+        android:text="Task Name:" />
+
+    <EditText
+        android:id="@+id/etTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBack"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@+id/tvTaskName"
+        android:layout_toRightOf="@+id/tvTaskName"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvTaskName"
+        android:layout_alignRight="@+id/tvTaskName"
+        android:layout_below="@+id/etTaskName"
+        android:layout_marginTop="61dp"
+        android:text="Time:" />
+
+    <TextView
+        android:id="@+id/tvEditTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etTaskName"
+        android:layout_alignStart="@+id/etTaskName"
+        android:layout_alignTop="@+id/tvTime"
+        android:text="Time" />
+
+    <TextView
+        android:id="@+id/tvTDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvTime"
+        android:layout_alignRight="@+id/tvTime"
+        android:layout_below="@+id/tvTime"
+        android:layout_marginTop="64dp"
+        android:text="Date:" />
+
+    <TextView
+        android:id="@+id/tvEditDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTDate"
+        android:layout_alignLeft="@+id/tvEditTime"
+        android:layout_alignStart="@+id/tvEditTime"
+        android:text="TextView" />
+
+</RelativeLayout>
